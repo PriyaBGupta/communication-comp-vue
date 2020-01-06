@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import {eventBus} from '../main';
 export default{
     props:{
         myName:{
@@ -28,6 +29,12 @@ export default{
             this.$emit('nameWasReset',this.myName)
         }
 
+    },
+    created(){
+        eventBus.$on('ageWasEdited',(age)=>{
+            this.userAge = age;
+        })
+        //communication between child
     }   
 }
 //props name sjould be equal in all three places should be equal 
